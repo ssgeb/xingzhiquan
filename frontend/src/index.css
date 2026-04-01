@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap");
+
+:root {
+  color-scheme: only light;
+  font-family: "Manrope", "Noto Sans SC", "PingFang SC", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  --color-primary: #0d7f74;
+  --color-primary-strong: #0b645b;
+  --color-secondary: #a8ece0;
+  --color-accent: #45c1b0;
+  --color-success: #1ea97b;
+  --color-info: #3d87f5;
+  --color-danger: #d53b5e;
+  --color-text-strong: #11222f;
+  --color-text: #2e3e49;
+  --color-text-muted: #677b89;
+  --color-border: rgba(13, 127, 116, 0.2);
+  --color-bg: #f4fbfa;
+  --color-surface: #ffffff;
+  --color-surface-soft: #ecfaf8;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 30px;
+  --shadow-soft: 0 16px 30px rgba(12, 103, 93, 0.15);
+  --shadow-card: 0 20px 44px rgba(16, 38, 52, 0.08);
+  --sidebar-width: 102px;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(69, 193, 176, 0.24), transparent 38%),
+    radial-gradient(circle at 86% 6%, rgba(90, 140, 255, 0.17), transparent 28%),
+    linear-gradient(180deg, #f9fefd 0%, #e8f8f5 100%);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-attachment: fixed;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text-strong);
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-shell {
+  width: min(1400px, 100%);
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: 24px;
+  padding: 24px 32px 32px;
+}
+
+.ghost-button {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(13, 127, 116, 0.32);
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--color-primary-strong);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ghost-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(13, 127, 116, 0.18);
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --sidebar-width: 88px;
+  }
+
+  .app-shell {
+    padding: 16px 20px 24px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .app-shell {
+    grid-template-columns: 72px 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+}

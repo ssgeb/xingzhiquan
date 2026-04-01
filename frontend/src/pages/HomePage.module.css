@@ -1,0 +1,40 @@
+﻿.masonry {
+  column-count: 4;
+  column-gap: 24px;
+}
+
+.masonryItem {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 24px;
+  animation: fadeUp 300ms ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 1000px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 700px) {
+  .masonry {
+    column-count: 1;
+  }
+}

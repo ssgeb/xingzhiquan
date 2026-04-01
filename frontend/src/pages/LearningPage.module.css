@@ -1,0 +1,33 @@
+﻿.emptyCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 64px 48px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 20px 38px rgba(13, 127, 116, 0.1);
+  text-align: center;
+}
+
+.icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #3bc8b6 0%, #0d7f74 100%);
+  display: grid;
+  place-items: center;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text-strong);
+}
+
+.description {
+  max-width: 520px;
+  font-size: 15px;
+  color: var(--color-text-muted);
+}

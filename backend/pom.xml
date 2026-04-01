@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.4</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>org.example</groupId>
+    <artifactId>xingzhiquan</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>xingzhiquan</name>
+    <description>Xingzhiquan MVP authentication service</description>
+
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+
+        <repository>
+            <name>Central Portal Snapshots</name>
+            <id>central-portal-snapshots</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring AI 渚濊禆鐗堟湰缁熶竴绠＄悊锛圔OM锛夛紝鐢ㄤ簬閿佸畾 Spring AI 鐩稿叧渚濊禆鐗堟湰 -->
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>1.0.3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Elasticsearch 瀹樻柟 Java API Client锛堢被鍨嬪畨鍏ㄧ殑 ES 璋冪敤锛?-->
+        <dependency>
+            <groupId>co.elastic.clients</groupId>
+            <artifactId>elasticsearch-java</artifactId>
+            <version>9.2.1</version>
+        </dependency>
+
+        <!-- Elasticsearch 浣庡眰 REST 瀹㈡埛绔紙搴曞眰閫氫俊涓庡吋瀹规€х粍浠讹級 -->
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-client</artifactId>
+            <version>9.2.1</version>
+        </dependency>
+
+        <!-- Spring Web锛氭彁渚?MVC銆丷EST Controller銆丷estTemplate 绛?Web 鑳藉姏 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring AI OpenAI Starter锛氭帴鍏?OpenAI 妯″瀷璋冪敤鑳藉姏 -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-openai</artifactId>
+        </dependency>
+
+        <!-- Spring AI Elasticsearch 鍚戦噺搴擄細鐢ㄤ簬鍚戦噺妫€绱?Embedding 瀛樺偍锛圧AG 鍩虹缁勪欢锛?-->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-vector-store-elasticsearch</artifactId>
+        </dependency>
+
+        <!-- 鍙傛暟鏍￠獙锛欱ean Validation锛圝akarta Validation / Hibernate Validator锛?-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- JDBC锛氭暟鎹簮涓?JDBC 璁块棶鍩虹锛堥厤鍚?MyBatis 浣跨敤锛?-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <!-- MyBatis Spring Boot Starter锛歁yBatis 闆嗘垚涓?Mapper 鎵弿 -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+
+        <!-- MySQL 椹卞姩锛氳繛鎺?MySQL 鏁版嵁搴?-->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.5.0</version>
+        </dependency>
+
+        <!-- Spring Security锛氳璇?閴存潈妗嗘灦鍩虹 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- OAuth2 Resource Server锛氱敤浜庢牎楠?Bearer JWT锛堟棤鐘舵€?API 閴存潈锛?-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+
+        <!-- Redis锛歋pring Data Redis锛堢紦瀛樸€侀獙璇佺爜銆佽鏁扮瓑瀛樺偍锛?-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- Redisson锛氬垎甯冨紡閿併€侀檺娴佺瓑楂樼骇 Redis 鑳藉姏灏佽 -->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.52.0</version>
+        </dependency>
+
+        <!-- Kafka锛氱敤浜庡紓姝ュ啓鍏ャ€佽仛鍚堟秷璐癸紙璁℃暟/Outbox 绛夛級 -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+        <!-- Caffeine锛氭湰鍦板唴瀛樼紦瀛橈紙楂樻€ц兘 LRU/TTL 缂撳瓨锛?-->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>3.1.8</version>
+        </dependency>
+
+        <!-- Actuator锛氬仴搴锋鏌ヤ笌杩愯鎸囨爣锛?actuator/*锛?-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- Lombok锛氬噺灏戞牱鏉夸唬鐮侊紙Getter/Setter/Builder 绛夛級锛岀紪璇戞湡鐢熸晥 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Mail锛氶偖浠跺彂閫佽兘鍔涳紙楠岃瘉鐮?閫氱煡绛夛級 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+        <!-- 闃块噷浜?OSS SDK锛氬璞″瓨鍌ㄧ洿浼?绛惧悕/涓婁紶涓嬭浇 -->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.17.3</version>
+        </dependency>
+
+        <!-- 娴嬭瘯锛歋pring Boot 娴嬭瘯濂椾欢锛圝Unit銆丮ock銆乀est utilities锛?-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Spring Security 娴嬭瘯锛氭彁渚?MockMvc 瀹夊叏娴嬭瘯涓庢敞瑙ｆ敮鎸?-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito JUnit Jupiter锛歁ockito 涓?JUnit5 闆嗘垚 -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Alibaba Canal Client锛氳闃?娑堣垂 Canal 澧為噺鏁版嵁锛圡ySQL binlog锛?-->
+        <dependency>
+            <groupId>com.alibaba.otter</groupId>
+            <artifactId>canal.client</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+
+        <!-- Alibaba Canal Common锛欳anal 鍏叡宸ュ叿涓庡熀纭€妯″瀷 -->
+        <dependency>
+            <groupId>com.alibaba.otter</groupId>
+            <artifactId>canal.common</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+
+        <!-- Alibaba Canal Protocol锛欳anal 閫氫俊鍗忚涓庢秷鎭粨鏋?-->
+        <dependency>
+            <groupId>com.alibaba.otter</groupId>
+            <artifactId>canal.protocol</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+</dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.tongji.XingzhiquanApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+

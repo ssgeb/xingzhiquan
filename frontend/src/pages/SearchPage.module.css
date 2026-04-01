@@ -1,0 +1,20 @@
+﻿.loadMoreBtn {
+  align-self: center;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(13, 127, 116, 0.2);
+}
+
+.loginHint {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #ecfaf8;
+  color: #0b645b;
+  border: 1px solid rgba(13, 127, 116, 0.2);
+  font-size: 13px;
+}
